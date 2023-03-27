@@ -1,0 +1,86 @@
+# 3.1
+# s = ["1", "2", "3", "4", "5"]
+# s = list(map(int, s))
+# print(s)
+import itertools
+import string
+import random
+
+
+# 3.2
+# s = [1, 2, 3, 2, 1, 4, 5]
+# num_different_elements = len(set(s))
+# print(num_different_elements)
+
+# 3.3
+# s = [1,2,3,4,5,6]
+# print(s)
+# print(s[::-1])
+# print(" ")
+
+# 3.4
+# s = [1,2,8,4,5,6,8,8]
+# x = 8
+# print(f"{s},x = {x}")
+# print([ind for ind in range(len(s)) if s[ind] == x])
+# print(" ")
+
+# 3.5
+# s = [1, 2, 3, 4, 5, 6]
+# result = sum(s[::2])
+# print(result)
+
+# 3.6
+# s = ['awndoaw','dwoandoaw','amwdadwiomisngodi']
+# print (max(s, key=len))
+# print(" ")
+
+# 3.7
+# is_harshad_number = lambda n: n % sum(int(d) for d in str(n)) == 0
+# print(is_harshad_number(18))   # True
+# print(is_harshad_number(19))   # False
+
+# 3.8
+# N = 8
+# s = ''.join(random.choices(string.ascii_letters, k=N))
+# print(s)
+
+# 3.9
+# def rle_encode(s):
+#     return [(c, len(list(g))) for c, g in itertools.groupby(s)]
+#
+#
+# print(rle_encode('ABBCCCDEF'))
+
+# 4.2
+# import sys
+#
+# def my_print(*args, sep=' ', end='\n'):
+#     output = sep.join(map(str, args)) + end
+#     sys.stdout.write(output)
+#
+# my_print('Hello', 'world', sep=', ', end='!\n')
+
+# 5.1
+def ham_dist(n1, n2):
+    # Переводим числа в двоичную систему счисления
+    bin1 = bin(n1)[2:]
+    bin2 = bin(n2)[2:]
+
+    # Дополняем двоичное представление строк нулями справа, если они различаются в длине
+    if len(bin1) > len(bin2):
+        bin2 = bin2.zfill(len(bin1))
+    else:
+        bin1 = bin1.zfill(len(bin2))
+
+    # Считаем количество несовпадающих битов
+    dist = 0
+    for i in range(len(bin1)):
+        if bin1[i] != bin2[i]:
+            dist += 1
+
+    return dist
+
+
+print(ham_dist(3, 4))
+
